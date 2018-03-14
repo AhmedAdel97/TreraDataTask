@@ -1,0 +1,122 @@
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+
+import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.border.EmptyBorder;
+
+public class Task2 extends JComponent {
+	String[] colName = new String[] { "name2" };
+	Object[][] products = new Object[][] { { "two" }, { "three" },
+
+			{ "four" }, { "one" } };
+	String[] colName1 = new String[] { "name111" };
+	Object[][] products1 = new Object[][] { { "one" }, { "two" }, { "three" },
+
+			{ "four" }
+
+	};
+	JPanel panel;
+	JFrame frame;
+	JTable table1;
+	JTable table2;
+	int screenX = 0;
+	int screenY = 0;
+	int myX = 0;
+	int myY = 0;
+
+	public Task2() {
+		frame = new JFrame();
+
+		frame.setVisible(true);
+
+		panel = new JPanel();
+		panel.setLayout(null);
+		panel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		// panel.setLayout(new BorderLayout(0, 0));
+		table1 = new JTable(products, colName);
+		JScrollPane scrollerA = new JScrollPane(table1);
+		scrollerA.setBounds(100, 100, 200, 70);
+		table2 = new JTable(products1, colName1);
+		JScrollPane scrollerB = new JScrollPane(table2);
+		scrollerB.setBounds(300, 300, 200, 70);
+
+		panel.add(scrollerA);
+		panel.add(scrollerB);
+
+		frame.setContentPane(panel);
+
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setBounds(100, 100, 700, 700);
+
+		addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				screenX = e.getXOnScreen();
+				screenY = e.getYOnScreen();
+
+				myX = getX();
+				myY = getY();
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+			}
+
+		});
+		scrollerA.addMouseMotionListener(new MouseMotionListener() {
+
+			public void mouseDragged(MouseEvent e) {
+				int deltaX = e.getXOnScreen() - screenX;
+				int deltaY = e.getYOnScreen() - screenY;
+
+				scrollerA.setLocation(myX + deltaX, myY + deltaY);
+			}
+
+			public void mouseMoved(MouseEvent e) {
+			}
+
+		});
+		scrollerB.addMouseMotionListener(new MouseMotionListener() {
+
+			public void mouseDragged(MouseEvent e) {
+				int deltaX = e.getXOnScreen() - screenX;
+				int deltaY = e.getYOnScreen() - screenY;
+
+				scrollerB.setLocation(myX + deltaX, myY + deltaY);
+			}
+
+			public void mouseMoved(MouseEvent e) {
+			}
+
+		});
+
+	}
+
+	public static void main(String[] args) {
+		new Task2();
+	}
+
+}
