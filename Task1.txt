@@ -1,0 +1,62 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.StringTokenizer;
+
+public class Task1 {
+	
+	public static void main(String[] args) throws IOException {
+		
+		StringBuilder sb;
+		Queue A = new LinkedList<>();
+		Queue B = new LinkedList<>();
+	    String line= "";
+		String Path = "/Users/Dell/Desktop/scv.scv";
+		BufferedReader br = new BufferedReader(new FileReader(Path));
+		while ((line = br.readLine()) != null) {
+
+			
+			String[] arr=line.split(",");
+			String s1=arr[0];
+			String s2=arr[1];
+			A.add(s1);
+			B.add(s2);
+		//	System.out.println(s1+" - - "+s2);
+			
+			
+			
+			
+		}
+
+		System.out.print("[");
+		while(!A.isEmpty()){
+			String out=(String) A.poll();
+			if(out.equals(""))break;
+			if(A.isEmpty())
+			System.out.print(out);
+			else
+				System.out.print(out+",");
+		}
+		System.out.println("]");
+		
+		System.out.print("[");
+		while(!B.isEmpty()){
+			String oud=(String) B.poll();
+			if(oud.equals(""))break;
+			if(B.isEmpty())
+			System.out.print(oud);
+			else
+				System.out.print(oud+",");
+		}
+		System.out.println("]");
+		
+		
+		
+		
+		
+	}
+}
