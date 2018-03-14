@@ -7,7 +7,7 @@
 ## Task2
 - the task was to make 2 scrollbar Tables and make them movable by pressing on the tables  so i made 2 tables and add them to scrollbar and added to the action listener to each of them so it can be draggable on the panel
 
-##Task 3 
+## Task 3 
 - the task was a compeltion of task2 so it was to link each elements with the same content with a line or link 
 - So my approach is to make a movable link and resizable at the same time so you can move any table and adjust it's line connecting the elemnts together manually 
  
